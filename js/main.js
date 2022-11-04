@@ -30,7 +30,7 @@ while (numbers.length < 3) {
 const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
-// logica core
+//logica core
 
 const answerList = [];
 let counter = 0;
