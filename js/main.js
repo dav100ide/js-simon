@@ -11,15 +11,12 @@ function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function askAnswer{
-
-}
 /* =======================
      main
 ========================= */
 // genero un array di 5 randomici
 const numbers = [];
-while (numbers.length < 5) {
+while (numbers.length < 3) {
    const rndInteger = getRndInteger(1, 100);
    if (!numbers.includes(rndInteger)) {
       numbers.push(rndInteger);
@@ -27,8 +24,33 @@ while (numbers.length < 5) {
 }
 
 // stampo l'array all'utente
-const numberList = document.getElementById('number-list');
+const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
-// timer di 30sec poi chiedo all'utente i numeri che ha vista
+// timer di 30sec poi nascondo l'array all'utente
+let timer = setTimeout(hide, 5000);
+timer = false;
+function hide() {
+   numberList.classList.add('fade-away');
+   timer = true;
+}
 
+// logica core
+if (timer === true) {
+   console.log(timer);
+   const answerList = [];
+   let counter = 0;
+   for (let i = 0; i < numbers.length; i++) {
+      const answer = Number(prompt('dimmi un numero'));
+      // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
+      if (numbers.includes(answer)) {
+         answerList.push(answer);
+         counter++;
+      }
+   }
+
+   console.log(counter, answerList);
+
+   const result = document.getElementById('result');
+   result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
+}

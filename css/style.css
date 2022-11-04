@@ -16,3 +16,14 @@
    margin: 0 auto;
    padding: 2rem 0;
 }
+
+/* main */
+.number-list {
+   font-size: 2rem;
+   opacity: 1;
+   transition: opacity ease-out 0.52s;
+}
+
+.fade-away {
+   opacity: 0;
+}
