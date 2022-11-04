@@ -15,7 +15,7 @@ function show() {
 }
 
 /* =======================
-main
+   main
 ========================= */
 // genero un array di 5 randomici
 const numbers = [];
@@ -40,13 +40,18 @@ function simon() {
       const answerList = [];
       let counter = 0;
       let feedback = '';
-      for (let i = 0; i < numbers.length; i++) {
+      for (let i = 0; i < 5; i++) {
          const answer = Number(prompt('dimmi un numero'));
          // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
          if (numbers.includes(answer)) {
             answerList.push(answer);
             counter++;
             feedback = 'i numeri indovinati sono: ';
+            for (let i = 0; i < numbers.length; i++) {
+               if (numbers[i] === answer) {
+                  numbers.splice(i, 1);
+               }
+            }
          }
       }
 
