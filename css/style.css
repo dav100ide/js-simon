@@ -16,14 +16,21 @@
    margin: 0 auto;
    padding: 2rem;
 }
-
+body {
+   background-color: #333;
+   color: #eee;
+}
 /* main */
 .number-list {
    font-size: 2rem;
    opacity: 1;
-   transition: opacity ease-out 0.52s;
+   transition: opacity ease-out 2s;
 }
 
 .fade-away {
    opacity: 0;
+}
+
+#result {
+   font-size: 1.5rem;
 }

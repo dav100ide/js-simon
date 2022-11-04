@@ -30,9 +30,6 @@ while (numbers.length < 3) {
 const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
-// timer di 30sec poi nascondo l'array all'utente
-setTimeout(hide, 5000);
-
 // logica core
 
 const answerList = [];
@@ -51,4 +48,5 @@ console.log(counter, answerList);
 const result = document.getElementById('result');
 result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
 
-// prova pushh github
+// timer di 30sec poi nascondo l'array all'utente
+setTimeout(hide, 5000, numberList);
