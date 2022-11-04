@@ -10,19 +10,16 @@
 function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function hide() {
-   numberList.classList.add('fade-away');
-}
 function show() {
    numberList.classList.remove('fade-away');
 }
 
 /* =======================
-     main
+main
 ========================= */
 // genero un array di 5 randomici
 const numbers = [];
-while (numbers.length < 5) {
+while (numbers.length < 2) {
    const rndInteger = getRndInteger(1, 100);
    if (!numbers.includes(rndInteger)) {
       numbers.push(rndInteger);
@@ -34,26 +31,29 @@ const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
 // timer di 30sec poi nascondo l'array all'utente
-setTimeout(hide, 4000);
-setTimeout(function () {
-   //logica core
+setTimeout(simon, 4000);
+function simon() {
+   numberList.classList.add('fade-away');
+   setTimeout(function () {
+      //logica core
 
-   const answerList = [];
-   let counter = 0;
-   let feedback = '';
-   for (let i = 0; i < numbers.length; i++) {
-      const answer = Number(prompt('dimmi un numero'));
-      // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
-      if (numbers.includes(answer)) {
-         answerList.push(answer);
-         counter++;
-         feedback = 'i numeri indovinati sono: ';
+      const answerList = [];
+      let counter = 0;
+      let feedback = '';
+      for (let i = 0; i < numbers.length; i++) {
+         const answer = Number(prompt('dimmi un numero'));
+         // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
+         if (numbers.includes(answer)) {
+            answerList.push(answer);
+            counter++;
+            feedback = 'i numeri indovinati sono: ';
+         }
       }
-   }
 
-   console.log(counter, answerList);
+      console.log(counter, answerList);
 
-   const result = document.getElementById('result');
-   result.innerHTML = `hai fatto ${counter}punti, ${feedback} ${answerList}`;
-   show();
-}, 6000);
+      const result = document.getElementById('result');
+      result.innerHTML = `hai fatto ${counter}punti, ${feedback} ${answerList}`;
+      show();
+   }, 3000);
+}
