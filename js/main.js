@@ -40,18 +40,20 @@ setTimeout(function () {
 
    const answerList = [];
    let counter = 0;
+   let feedback = '';
    for (let i = 0; i < numbers.length; i++) {
       const answer = Number(prompt('dimmi un numero'));
       // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
       if (numbers.includes(answer)) {
          answerList.push(answer);
          counter++;
+         feedback = 'i numeri indovanati sono: ';
       }
    }
 
    console.log(counter, answerList);
 
    const result = document.getElementById('result');
-   result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
+   result.innerHTML = `hai fatto ${counter}punti, ${feedback} ${answerList}`;
    show();
 }, 5000);
