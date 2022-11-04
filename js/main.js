@@ -54,3 +54,4 @@ if (timer === true) {
    const result = document.getElementById('result');
    result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
 }
+// prova pushh github
