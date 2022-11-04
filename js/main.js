@@ -10,6 +10,9 @@
 function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+function hide(item) {
+   item.classList.add('fade-away');
+}
 
 /* =======================
      main
@@ -28,30 +31,24 @@ const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
 // timer di 30sec poi nascondo l'array all'utente
-let timer = setTimeout(hide, 5000);
-timer = false;
-function hide() {
-   numberList.classList.add('fade-away');
-   timer = true;
-}
+setTimeout(hide, 5000);
 
 // logica core
-if (timer === true) {
-   console.log(timer);
-   const answerList = [];
-   let counter = 0;
-   for (let i = 0; i < numbers.length; i++) {
-      const answer = Number(prompt('dimmi un numero'));
-      // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
-      if (numbers.includes(answer)) {
-         answerList.push(answer);
-         counter++;
-      }
+
+const answerList = [];
+let counter = 0;
+for (let i = 0; i < numbers.length; i++) {
+   const answer = Number(prompt('dimmi un numero'));
+   // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
+   if (numbers.includes(answer)) {
+      answerList.push(answer);
+      counter++;
    }
-
-   console.log(counter, answerList);
-
-   const result = document.getElementById('result');
-   result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
 }
+
+console.log(counter, answerList);
+
+const result = document.getElementById('result');
+result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
+
 // prova pushh github
