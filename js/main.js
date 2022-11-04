@@ -10,8 +10,11 @@
 function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function hide(item) {
-   item.classList.add('fade-away');
+function hide() {
+   numberList.classList.add('fade-away');
+}
+function show() {
+   numberList.classList.remove('fade-away');
 }
 
 /* =======================
@@ -19,7 +22,7 @@ function hide(item) {
 ========================= */
 // genero un array di 5 randomici
 const numbers = [];
-while (numbers.length < 3) {
+while (numbers.length < 5) {
    const rndInteger = getRndInteger(1, 100);
    if (!numbers.includes(rndInteger)) {
       numbers.push(rndInteger);
@@ -30,23 +33,25 @@ while (numbers.length < 3) {
 const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
-//logica core
-
-const answerList = [];
-let counter = 0;
-for (let i = 0; i < numbers.length; i++) {
-   const answer = Number(prompt('dimmi un numero'));
-   // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
-   if (numbers.includes(answer)) {
-      answerList.push(answer);
-      counter++;
-   }
-}
-
-console.log(counter, answerList);
-
-const result = document.getElementById('result');
-result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
-
 // timer di 30sec poi nascondo l'array all'utente
-setTimeout(hide, 5000, numberList);
+setTimeout(hide, 3000);
+setTimeout(function () {
+   //logica core
+
+   const answerList = [];
+   let counter = 0;
+   for (let i = 0; i < numbers.length; i++) {
+      const answer = Number(prompt('dimmi un numero'));
+      // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
+      if (numbers.includes(answer)) {
+         answerList.push(answer);
+         counter++;
+      }
+   }
+
+   console.log(counter, answerList);
+
+   const result = document.getElementById('result');
+   result.innerHTML = `hai fatto ${counter}punti, i numeri che hai indovinato sono ${answerList}`;
+   show();
+}, 5000);
