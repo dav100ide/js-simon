@@ -19,7 +19,7 @@ main
 ========================= */
 // genero un array di 5 randomici
 const numbers = [];
-while (numbers.length < 2) {
+while (numbers.length < 5) {
    const rndInteger = getRndInteger(1, 100);
    if (!numbers.includes(rndInteger)) {
       numbers.push(rndInteger);
@@ -55,5 +55,5 @@ function simon() {
       const result = document.getElementById('result');
       result.innerHTML = `hai fatto ${counter}punti, ${feedback} ${answerList}`;
       show();
-   }, 3000);
+   }, 2000);
 }
