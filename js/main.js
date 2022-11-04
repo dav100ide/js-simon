@@ -34,7 +34,7 @@ const numberList = document.querySelector('.number-list');
 numberList.innerHTML = numbers;
 
 // timer di 30sec poi nascondo l'array all'utente
-setTimeout(hide, 3000);
+setTimeout(hide, 4000);
 setTimeout(function () {
    //logica core
 
@@ -47,7 +47,7 @@ setTimeout(function () {
       if (numbers.includes(answer)) {
          answerList.push(answer);
          counter++;
-         feedback = 'i numeri indovanati sono: ';
+         feedback = 'i numeri indovinati sono: ';
       }
    }
 
@@ -56,4 +56,4 @@ setTimeout(function () {
    const result = document.getElementById('result');
    result.innerHTML = `hai fatto ${counter}punti, ${feedback} ${answerList}`;
    show();
-}, 5000);
+}, 6000);
