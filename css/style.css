@@ -1,9 +1,18 @@
-/* ===============
-   reser
+/* ==================
+      reser
 =================== */
 
 * {
    box-sizing: border-box;
    margin: 0;
    padding: 0;
+}
+
+/* ==================
+     commons
+===================== */
+.container {
+   max-width: 68.75rem;
+   margin: 0 auto;
+   padding: 2rem 0;
 }
