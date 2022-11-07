@@ -10,8 +10,8 @@
 function getRndInteger(min, max) {
    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function show() {
-   numberList.classList.remove('fade-away');
+function show(item) {
+   item.classList.remove('fade-away');
 }
 
 /* =======================
@@ -38,27 +38,20 @@ function simon() {
       //logica core
 
       const answerList = [];
-      let counter = 0;
       let feedback = '';
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < numbers.length; i++) {
          const answer = Number(prompt('dimmi un numero'));
          // stablisco se la risposta c'è nei numbers randomici e conto quante volte l'user ha detto la risposta giusta
-         if (numbers.includes(answer)) {
+         if (numbers.includes(answer) && !answerList.includes(answer)) {
             answerList.push(answer);
-            counter++;
             feedback = 'i numeri indovinati sono: ';
-            for (let i = 0; i < numbers.length; i++) {
-               if (numbers[i] === answer) {
-                  numbers.splice(i, 1);
-               }
-            }
          }
       }
 
-      console.log(counter, answerList);
+      console.log(answerList);
 
       const result = document.getElementById('result');
-      result.innerHTML = `hai fatto ${counter}punti, ${feedback} ${answerList}`;
-      show();
+      result.innerHTML = `hai fatto ${answerList.length}punti, ${feedback} ${answerList}`;
+      show(numberList);
    }, 2000);
 }
